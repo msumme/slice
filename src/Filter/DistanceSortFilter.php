@@ -6,8 +6,6 @@ use Doctrine\ORM\QueryBuilder;
 
 use Summe\Slice\AliasResolver\AliasResolverInterface;
 
-use Summe\Slice\Filter\OrderByFilter;
-
 class DistanceSortFilter extends AbstractDistanceFilter implements OrderByFilterInterface {
 	
 

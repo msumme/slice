@@ -6,8 +6,6 @@ use Summe\Slice\Result\ResultBuilderInterface;
 
 use Summe\Slice\Result\ResultSet;
 
-use Summe\Slice\Filter\FilterInterface;
-
 /**
  * Ex: $qb = $em->createQueryBuilder()->select('classname', alias);
  * 

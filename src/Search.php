@@ -2,11 +2,7 @@
 
 namespace Summe\Slice;
 
-use Summe\Slice\Result\EntityResultBuilder;
-
 use Summe\Slice\Filter\FilterInterface;
-
-use Summe\Slice\Result\FlatResultBuilder;
 
 use Summe\Slice\Result\ResultBuilderInterface;
 
@@ -18,13 +14,9 @@ use Summe\Slice\AliasResolver\AliasResolverInterface;
 
 use Summe\Slice\AliasResolver\AliasResolver;
 
-use Summe\Slice\Filter\PropertyPathFilterInterface;
-
 use Summe\Slice\Util\FieldUtil;
 
 use Doctrine\ORM\EntityManager;
-
-use Doctrine\ORM\Query;
 
 use Doctrine\ORM\QueryBuilder;
 

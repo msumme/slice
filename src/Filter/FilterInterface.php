@@ -2,7 +2,6 @@
 
 namespace Summe\Slice\Filter;
 
-
 use Summe\Slice\AliasResolver\AliasResolverInterface;
 
 use Doctrine\ORM\QueryBuilder;
