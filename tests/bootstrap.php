@@ -1,7 +1,7 @@
 <?php
 
 /* @var $autoloader \Composer\Autoload\ClassLoader */
-$autoloader = include '../vendor/autoload.php';
+$autoloader = include __DIR__. '/../vendor/autoload.php';
 
 $autoloader->addPsr4('Tests\\Summe\\Slice\\', __DIR__);
 
