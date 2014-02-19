@@ -1,0 +1,27 @@
+{
+    "name": "summe/slice",
+    "description": "A library for Doctrine2 ORM result-set filtering",
+    "autoload": {
+    	"psr-4": {
+    		"Summe\\Slice\\": "src/"
+    	}
+    },
+    "authors": [
+        {
+            "name": "Max Summe",
+            "email": "msumme@gmail.com"
+        }
+    ],
+    "require": {
+			"doctrine/orm": "*"
+    },
+    "require-dev": {
+    		"phpunit/phpunit": "3.7.*",
+    		"phpunit/phpunit-story": "*",
+    		"doctrine/data-fixtures": "dev-master"
+    },
+     "config": {
+        "bin-dir": "bin",
+        "process-timeout": "3000"
+    }
+}
