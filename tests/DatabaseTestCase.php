@@ -4,6 +4,7 @@ namespace Tests\Summe\Slice;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use Doctrine\DBAL\Driver\PDOSqlite\Driver as SqliteDriver;
 
 /**
  * Assumes you are NOT using a production DB when running your tests.
@@ -49,12 +50,18 @@ abstract class DatabaseTestCase extends \PHPUnit_Framework_TestCase {
 	
 	protected function rebuildSchema() {
 		
-		$name = $this->em->getConnection()->getDatabase();
+		$connection = $this->em->getConnection();
 		
-		if($name != 'testdb') {
-			$this->markTestSkipped("Test Database not detected.  NOT rebuilding schema.");
-			return;
-		}
+		$name = $connection->getDatabase();
+		
+		$driver = $connection->getDriver();
+		
+ 		if( !($driver instanceof SqliteDriver && $name === null)
+ 		&& $name != 'testdb'
+ 		) {
+ 			$this->markTestSkipped("Test Database not detected.  NOT rebuilding schema.");
+ 			return;
+ 		}
 		
 		$schemaTool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
 		
