@@ -3,7 +3,7 @@
     "description": "A library for Doctrine2 ORM result-set filtering",
     "autoload": {
     	"psr-4": {
-    		"Summe\\Slice\\": "src/"
+    		"Slice\\": "src/"
     	}
     },
     "authors": [

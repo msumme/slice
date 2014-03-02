@@ -34,7 +34,7 @@ Usage
 
 	$em = ...; \\Get entity manager
 
-	use Summe\Slice\Search;
+	use Slice\Search\Search;
 	$search = new Search($em, 'AcmeDemoBundle:Contact'); //or 'Acme\Demo\DemoBundle' - full name
 	
 	//Only get contacts with addresses 00211 zip code.
