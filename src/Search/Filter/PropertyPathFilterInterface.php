@@ -2,6 +2,13 @@
 
 namespace Slice\Search\Filter;
 
+/**
+ * This interface is necessary for FilterSet to properly construct all necessary joins 
+ * and aliases when constructing queries.  
+ * 
+ * @author msumme
+ *
+ */
 interface PropertyPathFilterInterface {
 	
 	/**

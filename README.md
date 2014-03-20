@@ -3,7 +3,15 @@ slice
 
 Doctrine2 ORM Search tool - get a slice of results by applying filters.  
 
-This tool will also supply (in the near future) a basic url parser to allow for filters to be added to the url (for client side searches.)
+The primary usage of this library is to create pageable searchable front-facing interfaces, by combining it with a tool
+to parse URLs into filters to apply to searches.
+
+The initial problem that was solved by this library was very slow counting for InnoDB databases when using Doctrine's Pager class and complex joined filtering.
+
+This library solves that problem by removing the DQL from the interface, which allows for managing the construction of multiple efficient queries.  This in turn allows for 
+reliable counting and paging for one-to-many and many-to-many joins.
+
+Those searches can then be used to create aggregated reports.  
 
 Usage
 -----
@@ -48,6 +56,10 @@ Usage
 	
 	$results = $search->getResults();
 	
+	$totalResults = $search->getTotalResultCount();
+	
+	echo "$totalResults records were found.\n";
+	
 	foreach($results as $contact) {
 		$addresses = $contact->getAddresses();
 	
@@ -56,6 +68,8 @@ Usage
 			print "\t" . $address->getStreet() ."\n";
 		} 
 	}
+	
+	// output paging links to allow various paging filters to be applied.
 	
 
 ```
@@ -82,6 +96,9 @@ DistanceCriteriaFilter and DistanceSortFilter allow for distance searches agains
 Multiple OrderByFilter instances can be added to a given search, but only 1 PagingFilter is used (the last given).
 
 Finally - ResultSetBuilderInterface objects allow for a particular result to be built instead of the default Entity result set.
+
+The FormulaFilter allows for complicated queries that aren't easily (or conveniently) expressed otherwise - however it is not safe to be exposed to the client via any web interface.  
+It can be used to limit the initial result set in interesting ways. 
 
 Example: 
 ```php
