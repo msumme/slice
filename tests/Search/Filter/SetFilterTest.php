@@ -1,5 +1,6 @@
 <?php
 namespace Tests\Slice\Search\Filter;
+
 use Slice\Search\Filter\SetFilter;
 
 /**
@@ -34,15 +35,24 @@ class SetFilterTest extends \PHPUnit_Framework_TestCase {
 		parent::tearDown ();
 	}
 	
+	public function testGetType()
+	{
+	    $this->assertEquals('set', $this->SetFilter->GetType());
+	}
 	
-	/**
-	 * Tests SetFilter->__construct()
-	 */
-	public function test__construct() {
-		// TODO Auto-generated SetFilterTest->test__construct()
-		$this->markTestIncomplete ( "__construct test not implemented" );
-		
-		$this->SetFilter->__construct(/* parameters */);
+	public function testGetDQL()
+	{
+	    $fakeResolver = $this->getMock('Slice\Search\AliasResolver\AliasResolverInterface');
+	    
+	    $fakeResolver->expects($this->any())
+    	    ->method('resolveAlias')
+    	    ->with('property')
+    	    ->will($this->returnValue('Alias.property'));
+
+	    $parameters = $this->SetFilter->getParameters();
+	    $keys = array_keys($parameters);
+	    
+	    $this->assertEquals("Alias.property IN (:{$keys[0]})", $this->SetFilter->getDQL($fakeResolver));
 	}
 }
 
