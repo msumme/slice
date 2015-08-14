@@ -37,19 +37,17 @@ class RangeFilterTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	
-	public function testGetValues() 
+	public function testGetValue() 
 	{
-		$this->markTestIncomplete ( "getType test not implemented" );
+		$this->assertEquals(array('start' => 0, 'end' => 10), $this->RangeFilter->getValue());
 	}
 	
 	/**
 	 * Tests RangeFilter->getType()
 	 */
 	public function testGetType() {
-		// TODO Auto-generated RangeFilterTest->testGetType()
-		$this->markTestIncomplete ( "getType test not implemented" );
 		
-		$this->RangeFilter->getType();
+	    $this->assertEquals('range', $this->RangeFilter->getType());
 	}
 }
 
